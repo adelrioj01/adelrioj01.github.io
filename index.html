@@ -185,6 +185,30 @@
     <a href="#top">Back to top ↑</a>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+    const observedSections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    const setCurrentSection = (id) => {
+      navLinks.forEach((link) => {
+        const isCurrent = link.getAttribute('href') === `#${id}`;
+        if (isCurrent) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setCurrentSection(visible.target.id);
+    }, { rootMargin: '-20% 0px -60%', threshold: [0, 0.2, 0.5] });
+
+    observedSections.forEach((section) => sectionObserver.observe(section));
+  </script>
 </body>
 </html>
