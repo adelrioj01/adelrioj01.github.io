@@ -121,6 +121,24 @@ h2 { max-width: 780px; margin: 0; font-size: clamp(2rem, 4.2vw, 3.9rem); line-he
 .wave { position: absolute; width: 150%; height: 130px; border-top: 3px solid #7bd1c2; transform: rotate(-4deg) skewX(-35deg); }
 .wave-a { top: 42%; box-shadow: 0 -18px 0 -16px #7bd1c2, 0 18px 0 -16px #7bd1c2; }
 .wave-b { top: 55%; opacity: .45; transform: rotate(3deg) skewX(48deg); }
+.side-project {
+  display: grid;
+  grid-template-columns: minmax(240px, .8fr) minmax(0, 1.2fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: 4rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.side-project-visual { position: relative; min-height: 250px; overflow: hidden; background: var(--night); text-decoration: none; }
+.side-project-visual img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 300ms ease-out; }
+.side-project-visual:hover img { transform: scale(1.02); }
+.side-project-visual span { position: absolute; right: .8rem; bottom: .8rem; min-height: 40px; display: inline-flex; align-items: center; padding: .5rem .75rem; color: var(--white); background: rgba(20,33,29,.92); font-family: var(--mono); font-size: .7rem; }
+.side-project-content { align-self: center; padding: .5rem 1rem .5rem 0; }
+.side-project-content h3 { margin: 1.2rem 0 .8rem; font-size: clamp(1.55rem, 2.5vw, 2.35rem); line-height: 1.1; letter-spacing: -.035em; }
+.side-project-content > p { color: var(--body); text-wrap: pretty; }
+.side-project-links { display: flex; flex-wrap: wrap; gap: 1.4rem; }
+
 .timeline article { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--grid-gap); padding: 2rem 0; border-top: 1px solid var(--line); }
 .timeline-date { color: var(--muted); }
 .timeline-date { grid-column: 1 / span 4; }
@@ -186,4 +204,11 @@ footer a { min-height: 44px; display: inline-flex; align-items: center; }
 
 @supports not (color: color-mix(in srgb, white, black)) {
   .site-header { background: var(--paper); }
+}
+
+
+@media (max-width: 760px) {
+  .side-project { grid-template-columns: 1fr; }
+  .side-project-visual { min-height: 230px; }
+  .side-project-content { padding: .25rem; }
 }
