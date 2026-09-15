@@ -2,7 +2,7 @@
 
 Source for [adelrioj01.github.io](https://adelrioj01.github.io), a static portfolio hosted with GitHub Pages.
 
-The site presents two selected projects, current experience, technical tools, and a downloadable CV. It uses plain HTML and CSS with no build step or runtime dependencies.
+The site presents two primary data projects, one secondary embedded-systems project, current experience, technical tools, and a downloadable CV. It uses plain HTML and CSS with no build step or runtime dependencies.
 
 ## Run locally
 
